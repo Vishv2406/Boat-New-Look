@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nirvana 751 ANC</title>
+    <link href="boat.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="boat.js"></script>
+    <style>
+       .product-container {
+            margin-top: 40px;
+        }
+        .product-details {
+            margin-top: 40px;
+            padding: 40px;
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-details h2 {
+            font-size: 24px;
+        }
+        .color-option {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .color-option.selected {
+            border: 4px solid #007bff;
+        }
+        .add-to-cart-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 36px;
+            margin-top: 40px;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #0056b3;
+        }
+        h1{
+            font-size: 50px;
+        }
+        p{
+            font-size: 34px;
+        }
+    </style>
+</head>
+
+<body>
+  <body id="bodycoloro">
+    <div class="dropdown">
+        <!-- to show the three navigation bar start -->
+        <div id="sidebar">
+            <div class="toggle-btn" onclick="show()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li id="loginphoto"><img src="login pic Background Removed.png" width="250px"></li>
+                <li id="login-signup" onclick="toggleloginbox()">Login / Sign-up</li>
+                <div id="overlay">
+                    <!-- Content of your overlay goes here -->
+                    <img onclick="hideOverlay()"
+                        style="margin-top: 15px; float: right; margin-right: 10px; cursor: pointer;"
+                        src="cross Background Removed.png" height="20px" width="20px">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <div id="loginForm" class="form-container show">
+                        <h2>Login Form</h2>
+                        <form>
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username"><br><br>
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password"><br><br>
+                            <input type="submit" value="Login">
+                        </form>
+                    </div>
+                    
+                    <div id="signupForm" class="form-container">
+                        <h2>Signup Form</h2>
+                        <form>
+                            <label for="newUsername">New Username:</label>
+                            <input type="text" id="newUsername" name="newUsername"><br><br>
+                            <label for="newPassword">New Password:</label>
+                            <input type="password" id="newPassword" name="newPassword"><br><br>
+                            <input type="submit" value="Signup">
+                        </form>
+                    </div>
+                </div>
+            </ul>
+            <!-- to show element of side bar end -->
+        </div id="bluro">
+        <ul id="menuitems">
+            <li><img id="alignment" src="boAt_logo.jpg.avif" width="200px"></li>
+            <li><a href="#">Categories</a>
+                <ul class="submenu">
+                    <table>
+                        <tr>
+                            <td class="earbuds-right"><a href="truewirelessearbuds.html" target="_blank" style="color: black;"><img
+                                        src="truelywirelessbuds.png" width="50px">
+                            True-Wireless Earbuds</a></td>
+                            <td class="smartwatch-right"><a href="personalisedproduct.html" target="_blank" style="color: black;"><img
+                                        src="personalisedproduct .png" width="50px" height="60px">
+                            Personalised Products</a></td>
+                            <td class="watch"><a href="smartwatch.html" target="_blank" style="color: black;"><img src="smartwatch.webp" width="50px"
+                                        height="50px">Smart Watches</a></td>
+                            <td class="wirlessheadphone-right"><a href="wirelessheadphones.html" target="_blank" style="color: black;"><img
+                                        src="wirelessheadphones.webp" width="50px" height="50px">Wireless Headphones</a></td>
+                        </tr>
+                        <tr>
+                            <td class="second-row-image"><a href="wiredearphone.html" target="_blank" style="color: black;"><img
+                                        src="boat-wired eaphone.webp" width="50px" height="50px">boAt Wired Earphone</a></td>
+                            <td class="second-row-image"><a href="wiredheadphones.html" target="_blank" style="color: black;"><img
+                                        src="boat-wired headphone.webp" width="50px" height="50px">boAt Wired Headphone</a></td>
+                            <td class="second-row-image"><a href="partyspeaker.html" target="_blank" style="color: black;"><img
+                                        src="boat-party speaker.webp" width="50px" height="50px">boAt Party Speaker</a></td>
+                            <td class="second-row-image"><a href="charger.html" target="_blank" style="color: black;"><img src="boat-charger.webp"
+                                        width="50px" height="50px">boAt Charger</a></td>
+                        </tr>
+                        <tr>
+                            <td class="second-row-image"><a href="trimmer.html" target="_blank" style="color: black;"><img src="boat-trimmer.webp"
+                                        width="50px" height="50px">boAt Trimmer</a></td>
+                            <td class="second-row-image"><a href="neckband.html" target="_blank" style="color: black;"><img src="boat-neckband.webp"
+                                        width="50px" height="50px">boAt Neckband</a></td>
+                            <td class="second-row-image"><a href="powerbank.html" target="_blank" style="color: black;"><img
+                                        src="boat-powerbank.webp" width="50px" height="50px">boAt Powerbank</a></td>
+                            <td class="second-row-image"><a href="cable.html" target="_blank" style="color: black;"><img src="boat-cables.webp"
+                                        width="50px" height="50px">boAt Cable</a></td>
+                        </tr>
+                    </table>
+                </ul>
+            </li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Service</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><img id="alignment2" src="images Background Removed Background Removed.png" width="500px"></li>
+            <li>
+                <div class="searchbar">
+                    <span><img class="searchimg" src="searchglass Background Removed.png" height="20px"></span>
+                    <form class="searchbox">
+                        <input type="search" placeholder="search">
+                    </form>
+                </div>
+            </li>
+        </ul>
+<hr>
+    <div class="product-details">
+        <div id="left" style="display: inline-block;">
+        <img src="nirvana 751 anc1.webp" alt="Airpods 131" height="1200px" width="1200px" style="border-radius: 20px;float: left;"></div>
+        <div id="right" style="display: inline-block;width:1340px;margin-left: 20px;">
+            <img src="star.png" height="30px" width="30px" style="display: inline;"><span style="font-size: 30px;display: inline;margin-left: 34px;">4.7 </span>
+            <span style="font-size: 30px;display: inline;margin-left:0px;">|29<img src="verified.png" width="30px" height="30px" style="display: inline;position: absolute;margin-left: 6px;"></span>
+            <span style="float: right;margin-left: 8px;font-size: 30px;">Best Seller</span>
+            <span><img src="flipkart.png" width="30px" height="30px" style="float: inline-end;"></span>
+            <h1>Nirvana 751 ANC</h1>
+            <p style="opacity: 0.7;">Netflix Stream Edition Premium Headphone For Movies & TV Shows,40mm Driver,65H Playback</p>
+        <p style="font-size: 50px;display: inline;opacity: 0.8;">Price : </p><span id="price" style="margin-top: 40px;font-size: 50px;font-weight: 550;display: inline;">₹4499</span>
+            <span style="font-size: 34px;font-weight: 300;text-decoration: line-through;"> ₹7990</span>
+            <span style="color: red;font-size: 34px;font-weight: 530;">44% off</span>
+        <p style="font-size: 30px;opacity: 0.8;">Choose Your Colors : </p>
+        <div class="color-options">
+            <div class="color-option selected" style="background-color: black;"></div>
+            <div class="color-option" style="background-color:#0A3FA8;"></div>
+            <div class="color-option" style="background-color:#808080;"></div>
+            <div class="color-option" style="background-color: #064F0E;"></div>
+            <div class="color-option" style="background-color: #3D7FFE;"></div>
+        </div>
+        <img src="Screenshot (17).png" alt="Specifications" width="1000px" height="800px"><br>
+        <a href="nirvana751anc1.html"><button class="add-to-cart-btn">Add to Cart</button></a></div>
+    </div>
+    <script>
+        $('.color-option').click(function() {
+            $('.color-option').removeClass('selected');
+            $(this).addClass('selected');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>boAt-lifestyle brand</title>
+<link rel="stylesheet" href="boat.css">
+<script src="boat.js" defer></script>
+<style>
+    .form-container {
+        display: none;
+    }
+    .form-container.show {
+        display: block;
+    }
+</style>
+</head>
+<body id="bodycoloro">
+<div class="dropdown">
+    <!-- to show the three navigation bar start -->
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="show()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li id="loginphoto"><img src="login pic Background Removed.png" width="250px"></li>
+            <li id="login-signup" onclick="toggleloginbox()">Login / Sign-up</li>
+            <div id="overlay">
+                <!-- Content of your overlay goes here -->
+                <img onclick="hideOverlay()"
+                    style="margin-top: 15px; float: right; margin-right: 10px; cursor: pointer;"
+                    src="cross Background Removed.png" height="20px" width="20px">
+                <label class="switch">
+                    <input type="checkbox" id="slider">
+                    <span class="slider round"></span>
+                </label>
+                <div id="loginForm" class="form-container show">
+                    <h2>Login Form</h2>
+                    <form>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username"><br><br>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password"><br><br>
+                        <input type="submit" value="Login">
+                    </form>
+                </div>
+                
+                <div id="signupForm" class="form-container">
+                    <h2>Signup Form</h2>
+                    <form>
+                        <label for="newUsername">New Username:</label>
+                        <input type="text" id="newUsername" name="newUsername"><br><br>
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword"><br><br>
+                        <input type="submit" value="Signup">
+                    </form>
+                </div>
+            </div>
+        </ul>
+        <!-- to show element of side bar end -->
+    </div>
+    <ul id="menuitems">
+        <li><img id="alignment" src="boAt_logo.jpg.avif" width="200px"></li>
+        <li><a href="#">Categories</a>
+            <ul class="submenu">
+                <table>
+                    <tr>
+                        <td class="earbuds-right"><a href="#" style="color: black;"><img
+                                    src="truelywirelessbuds.png" width="50px"></a></td>
+                        <td><a href="#" style="color: black;">True-Wireless Earbuds</a></td>
+                        <!-- Add other category items -->
+                    </tr>
+                </table>
+            </ul>
+        </li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Service</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><img id="alignment2" src="images Background Removed Background Removed.png" width="500px"></li>
+        <li>
+            <div class="searchbar">
+                <span><img class="searchimg" src="searchglass Background Removed.png" height="20px"></span>
+                <form class="searchbox">
+                    <input type="search" placeholder="search">
+                </form>
+            </div>
+        </li>
+    </ul>
+    <video width="101%" autoplay muted loop style="z-index:-1;">
+        <source src="Homebg.mp4" type="video/mp4">
+        <source src="Homebg.ogg" type="video/ogg">
+    </video>
+</div>
+
+
+
+<script>
+document.getElementById('slider').addEventListener('change', function() {
+    var loginForm = document.getElementById('loginForm');
+    var signupForm = document.getElementById('signupForm');
+    
+    if (this.checked) {
+        loginForm.classList.remove('show');
+        signupForm.classList.add('show');
+    } else {
+        loginForm.classList.add('show');
+        signupForm.classList.remove('show');
+    }
+});
+
+</script>
+</body>
+</html>

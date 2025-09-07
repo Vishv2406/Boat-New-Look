@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placed Order</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+        
+#video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-position: cover;
+    width: 100%;
+    z-index: -1; 
+}
+
+        .container {
+            position: relative;
+            max-width: 1000px;
+            padding: 60px;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            margin-left: -280px;
+            font-size: 36px;
+        }
+        @keyframes fadeout{
+            from{opacity:1;} 
+            to{opacity:0;display: none;}}
+        h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: red;
+            font-weight: 600;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 20px;
+            color: red;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], textarea {
+            width: 160%;
+            padding: 20px;
+            margin-bottom: 40px;
+            border: 2px solid white;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            font-size: 34px;
+            color: red;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="number"]:focus, textarea:focus {
+            outline: none;
+            border-color: red;
+        }
+
+        select {
+            width: 100%;
+            padding: 24px;
+            margin-bottom: 40px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+            font-size: 34px;
+            color: #333;
+            background-color: #fff;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        button {
+            width: 100%;
+            padding: 30px;
+            background-color: red;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 36px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        .bill-container {
+            display: none;
+            animation:fadeout 7s ease-out alternate;
+        }
+
+        .bill-container h2 {
+            margin-top: 40px;
+            color: rgb(67, 106, 214);
+            font-weight: 600;
+            margin-left: -200px;
+            font-size: 48px;
+        }
+        #qrcode2{
+            left: 20%;
+            display:none; 
+            z-index: 2;
+            margin-top: -400px;
+        }
+        .bill-details {
+
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+            display: none;
+            font-size: 40px;
+        }
+
+        .bill-details p {
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .bill-details p strong {
+            color: white;
+        }
+
+        .payment-success {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            font-size: 48px;
+            font-weight: 600;
+        }
+
+
+        .qr-code {
+            display: none;
+            max-width: 600px;
+        }
+
+        .cash-on-delivery {
+            display: none;
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            font-size: 34px;
+            font-weight: 600;
+        }
+
+        .paid-symbol {
+            color: #4CAF50;
+            font-size: 48px;
+            margin-left: 10px;
+        }
+#show{
+    color: #0056b3;
+}
+        @keyframes checkmark {
+            0% { stroke-dashoffset: 24; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        .paid-symbol svg {
+            width: 100px;
+            height: 100px;
+            stroke-width: 2;
+            stroke-dasharray: 24;
+            stroke-dashoffset: 24;
+            fill: none;
+            stroke: #4CAF50;
+            animation: checkmark 0.5s ease-in-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="z-index: 0;">
+        <h2>Place Your Order</h2>
+        <form id="order-form">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Please Enter Your Name Here" required>
+            <label for="address">Delivery Address:</label>
+            <textarea id="address" name="address" rows="4" placeholder="Enter Your Address Here" required></textarea>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Please Enter Your Email Here" required>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1"><br>
+            <label for="payment-method">Payment Method:</label>
+            <button value="upi" id="show" style="width:150px;height: 40px;display: flex;align-items: center;position: relative;justify-content: center;color: white;">UPI</button>
+            <button value="cod" id="cod" style="width: 450px;height: 40px;display: flex;align-items: center;position: relative;justify-content: center;transform: translate(180px,-60px);">COD(Cash On Delivery)</button>
+            
+        </form>
+        
+    </div>
+    <video autoplay muted loop id="video-bg">
+        <source src="boat12.mp4" type="video/mp4">
+    </video>
+
+    <div class="container bill-container" id="bill-con" style="position: absolute;display: none;background: transparent;margin-left: 200px;">
+        <h2>Order Summary</h2>
+        <div class="bill-details" id="bill-details">
+        </div>
+    </div>
+    <div id="qrcode2" style="height: 600px;width: 600x;">
+        <h2 style="font-size: 50px;">Pay on this QR Code</h2>
+        <h2 id="totamount" style="font-size: 50px;"></h2>
+        <img src="qrcode.jpg" height="800px" width="800px" style="margin-top: -60px;">
+    </div>
+    
+    <div class="payment-success" id="payment-success" style="z-index: 1;background-color: transparent;width: 800px;height: 200px;margin-right: 820px;color: green;font-size: 64px;">Payment Successful!!</div>
+    <video autoplay muted loop id="video-bg">
+        <source src="boAt___Nirvana_Ion_#TheNextBigThing(1080p).mp4" type="video/mp4">
+    </video>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        document.getElementById('order-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var name = document.getElementById('name').value;
+    var address = document.getElementById('address').value;
+    var email = document.getElementById('email').value;
+    var paymentMethod = document.querySelector('button:focus').value; // Get the value of the focused button
+    var quantity = parseInt(document.getElementById('quantity').value);
+    var productName = "Nirvana 751 ANC";
+    var pricePerUnit = 4499;
+    var totalAmount = quantity * pricePerUnit;
+    var price = document.getElementById("totamount");
+    price.innerHTML ="₹ " +totalAmount;
+    function generateTransactionID() {
+    var transactionID = '';
+    var digits = '0123456789';
+
+    for (var i = 0; i < 12; i++) {
+        var randomIndex = Math.floor(Math.random() * digits.length);
+        transactionID += digits[randomIndex];
+    }
+
+    return transactionID;
+}
+var id = generateTransactionID(); // Generate transaction ID
+price.innerHTML = "₹ " + totalAmount;
+var billDetails = document.getElementById('bill-details');
+billDetails.innerHTML = `
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Address:</strong> ${address}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Product:</strong> ${productName}</p>
+    <p><strong>Quantity:</strong> ${quantity}</p>
+    <p><strong>Total Amount:</strong> ₹${totalAmount}</p>
+    <p><strong>Payment Method:</strong> ${paymentMethod === 'upi' ? 'UPI' : 'Cash on Delivery'}</p>
+    ${paymentMethod === 'upi' ? `<p><strong>Transaction ID:</strong> ${id}</p><p><strong>Paid:</strong> <span class="paid-symbol">&#10004;</span></p>` : ''}
+`;
+
+
+    document.querySelector('.container').style.display = 'none';
+    document.querySelector('.bill-container').style.display = 'block';
+
+    if (paymentMethod === 'upi') {
+        document.getElementById('qrcode2').style.display = 'block';
+        $("#qrcode2").animate({opacity: 1},function(){
+        $(this).animate({opacity: 0}, 0);
+    });
+        setTimeout(function() {
+            document.querySelector('.payment-success').style.display = 'block';
+            $("#payment-success").animate({opacity: 1}, function(){
+        $(this).animate({opacity: 0}, 3000);
+    });
+        }, 4500);
+        setTimeout(function() {
+            document.querySelector('.bill-details').style.display = 'block';
+        }, 7000);
+        setTimeout(function(){
+            document.querySelector('#bill-con').style.display = 'block';
+        }, 7000);
+    } else {
+        document.querySelector('.cash-on-delivery').style.display = 'block';
+    }
+});
+$("#show").click(function(){
+    $("#qrcode2").animate({display:"block"},4000)
+})
+$("#cod").click(function(){
+    $('.bill-details').show();
+    $('#bill-con').show();
+
+$('.bill-container').css('animation', 'none');
+
+})
+    </script>
+</body>
+</html>
